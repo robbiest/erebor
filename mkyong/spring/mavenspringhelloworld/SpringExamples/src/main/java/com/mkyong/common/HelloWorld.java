@@ -6,7 +6,7 @@ package com.mkyong.common;
  */
 public class HelloWorld {
 	private String name;
-        // comment and another comment
+        // comment and another comment and a third comment
 	public void setName(String name) {
 		this.name = name;
 	}
