@@ -8,7 +8,7 @@ public class HelloWorld {
 	private String name;
         // comment and another comment and a third comment and a fourth comment
 	public void setName(String name) {
-		this.name = name;
+		this.name =name;
 	}
 
 	public void printHello() {
