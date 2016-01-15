@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:annotation-config />
+
+	<bean id="CustomerBean" class="com.mkyong.common.Customer">
+		<property name="action" value="buy" />
+		<property name="type" value="1" />
+	</bean>
+
+	<bean id="PersonBean1" class="com.mkyong.common.Person">
+		<property name="name" value="mkyong1" />
+		<property name="address" value="address 1" />
+		<property name="age" value="28" />
+	</bean>
+	
+	<bean id="PersonBean2" class="com.mkyong.common.Person">
+		<property name="name" value="mkyong2" />
+		<property name="address" value="address 2" />
+		<property name="age" value="28" />
+	</bean>
+	
+</beans>
