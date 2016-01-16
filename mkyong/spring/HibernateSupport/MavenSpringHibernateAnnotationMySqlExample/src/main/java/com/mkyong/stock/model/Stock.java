@@ -33,12 +33,7 @@ public class Stock implements java.io.Serializable {
 	}
 
 	@Id
-	//@GeneratedValue(strategy = IDENTITY)
-	
 	@SequenceGenerator(name="MY_SEQ", sequenceName="STOCK_SEQ")
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="my_seq")
-	
-	
 	@GeneratedValue(strategy=SEQUENCE, generator="MY_SEQ")
 	@Column(name = "STOCK_ID", unique = true, nullable = false)
 	public Integer getStockId() {
