@@ -7,7 +7,7 @@ import com.mkyong.ws.ServerInfo;
 public class WsPublisher{
  
 	public static void main(String[] args) {
-	   Endpoint.publish("http://localhost:8888/ws/server", new ServerInfo());
+	   Endpoint.publish("http://localhost:8887/ws/server", new ServerInfo());
 	   
 	   System.out.println("Service is published!");
     }
