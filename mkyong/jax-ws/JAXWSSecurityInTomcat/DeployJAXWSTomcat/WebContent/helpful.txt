@@ -1,0 +1,91 @@
+There problems with the code which required setting up a keystore, generating a certificate and then adding it to the cacerts file
+
+C:\applications\java_security\keystore>keytool -genkey -alias robbie -keyalg RSA -keystore c:\applications\java_security\keystore\robbie.jks
+Enter keystore password:
+Re-enter new password:
+What is your first and last name?
+  [Unknown]:  robbie stewart
+What is the name of your organizational unit?
+  [Unknown]:
+What is the name of your organization?
+  [Unknown]:
+What is the name of your City or Locality?
+  [Unknown]:
+What is the name of your State or Province?
+  [Unknown]:
+What is the two-letter country code for this unit?
+  [Unknown]:
+Is CN=robbie stewart, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown correct?
+  [no]:  yes
+
+Enter key password for <robbie>
+        (RETURN if same as keystore password):
+
+C:\applications\java_security\keystore>
+
+
+http://www.mkyong.com/webservices/jax-ws/java-security-cert-certificateexception-no-name-matching-localhost-found/
+
+javax.xml.ws.WebServiceException: Failed to access the WSDL at: https://localhost:8443/DeployJAXWSTomcat/hello?wsdl. It failed with: 
+	sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target.
+
+	
+	
+
+	
+	keytool -import -v -trustcacerts -alias robbie -file robbie.csr -keystore <JAVA HOME>/jre/lib/security/cacerts -keypass changeit -storepass changeit
+	
+	
+	keytool -export -alias robbie -storepass password -file robbie.cer -keystore robbie.jks
+	
+C:\applications\java_security\keystore>keytool -export -alias robbie -storepass password -file robbie.cer -keystore robbie.jks
+Certificate stored in file <robbie.cer>
+
+C:\applications\java_security\keystore>dir
+ Volume in drive C is OS
+ Volume Serial Number is 80C4-59CC
+
+ Directory of C:\applications\java_security\keystore
+
+21/01/2016  14:12    <DIR>          .
+21/01/2016  14:12    <DIR>          ..
+21/01/2016  12:14                 0 keytool
+21/01/2016  14:12               905 robbie.cer
+21/01/2016  13:51             1,108 robbie.csr
+21/01/2016  12:15             2,258 robbie.jks
+               4 File(s)          4,271 bytes
+               2 Dir(s)  45,097,025,536 bytes free
+
+C:\applications\java_security\keystore>keytool -import -v -trustcacerts -alias robbie -file robbie.cer -keystore "C:\Program Files\Java\jdk1.8.0_65\jre\lib\security\cacerts" -keypass changeit -storepass changeit
+Owner: CN=robbie stewart, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Issuer: CN=robbie stewart, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Serial number: 30d0cf50
+Valid from: Thu Jan 21 12:15:40 GMT 2016 until: Wed Apr 20 13:15:40 BST 2016
+Certificate fingerprints:
+         MD5:  CD:0E:E3:5F:EB:E2:22:63:4D:BC:75:58:44:B6:C6:A4
+         SHA1: 7B:0B:AF:C1:85:F8:42:95:0C:85:51:D2:41:35:5C:D1:6A:6A:00:FE
+         SHA256: 75:54:BB:48:5C:E4:D4:02:EE:30:73:E8:0A:4C:44:A4:49:9D:AD:9C:F7:55:1F:7F:B1:B2:0E:3F:B8:A8:5E:43
+         Signature algorithm name: SHA256withRSA
+         Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 58 C9 55 37 74 94 14 EB   36 AC 92 AA 3B C1 38 76  X.U7t...6...;.8v
+0010: 2E C4 F6 24                                        ...$
+]
+]
+
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+[Storing C:\Program Files\Java\jdk1.8.0_65\jre\lib\security\cacerts]
+
+C:\applications\java_security\keystore>	
+	
+Also worth looking at
+http://www.mkyong.com/webservices/jax-ws/deploy-jax-ws-web-services-on-tomcat-ssl-connection/
+http://www.mkyong.com/webservices/jax-ws/java-security-cert-certificateexception-no-name-matching-localhost-found/
+http://www.mkyong.com/webservices/jax-ws/suncertpathbuilderexception-unable-to-find-valid-certification-path-to-requested-target/	
+	
