@@ -1,0 +1,4 @@
+SEVERE: WSSERVLET11: failed to parse runtime descriptor: com.sun.xml.ws.util.exception.LocatableWebServiceException: class not found in runtime descriptor: com.mkyong.ws.HelloWorldImpl
+at line 8 of jndi:/localhost/ContainerAuthenticationWithTomcat/WEB-INF/sun-jaxws.xml
+com.sun.xml.ws.util.exception.LocatableWebServiceException: class not found in runtime descriptor: com.mkyong.ws.HelloWorldImpl
+at line 8 of jndi:/localhost/ContainerAuthenticationWithTomcat/WEB-INF/sun-jaxws.xml
