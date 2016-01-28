@@ -16,7 +16,14 @@ public class App
         stock.setStockCode("4715");
         stock.setStockName("GENM");
         
+        Stock stock2 = new Stock();
+        
+        stock2.setStockCode("47152");
+        stock2.setStockName("GENM2");
+        
         session.save(stock);
+        session.save(stock2);
         session.getTransaction().commit();
+        System.out.println("main: finish");
     }
 }

@@ -1,0 +1,1 @@
+http://www.java4s.com/hibernate/hibernate-versioning-example-hibernate-versioning-of-objects/

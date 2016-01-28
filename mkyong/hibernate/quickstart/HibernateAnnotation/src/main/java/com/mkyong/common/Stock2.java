@@ -4,6 +4,8 @@ import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import static javax.persistence.GenerationType.IDENTITY;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
@@ -12,26 +14,25 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "stock", catalog = "hib", uniqueConstraints = {
+@Table(name = "stock2", catalog = "hib", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "STOCK_NAME"),
 		@UniqueConstraint(columnNames = "STOCK_CODE") })
-public class Stock implements java.io.Serializable {
+public class Stock2 implements java.io.Serializable {
 
 	private Integer stockId;
 	private String stockCode;
 	private String stockName;
 
-	public Stock() {
+	public Stock2() {
 	}
 
-	public Stock(String stockCode, String stockName) {
+	public Stock2(String stockCode, String stockName) {
 		this.stockCode = stockCode;
 		this.stockName = stockName;
 	}
 
 	@Id
-	@SequenceGenerator(name="MY_SEQ", sequenceName="STOCK_SEQ", allocationSize = 1, initialValue= 1)
-	@GeneratedValue(strategy=SEQUENCE, generator="MY_SEQ")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "STOCK_ID", unique = true, nullable = false)
 	public Integer getStockId() {
 		return this.stockId;
